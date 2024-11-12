@@ -16,8 +16,8 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-let arrow_left = document.querySelector(".arrow_left img");
-let arrow_right = document.querySelector(".arrow_right img");
+let arrow_left = document.querySelector("img.arrow_left");
+let arrow_right = document.querySelector("img.arrow_right");
 
 arrow_left.addEventListener("click", slidePrecedente);
 arrow_right.addEventListener("click", slideSuivante);
@@ -29,6 +29,22 @@ function slideSuivante() {
 function slidePrecedente() {
     slideShow(slideIndex -= 1);
 }
+
+ // Récupère l'élément point 
+ const dotsContainer = document.querySelector('.dots');
+	
+ // Boucle pour ajouter un point par image 
+ for (let i = 0; i < slides.length; i++) {
+   const dot = document.createElement('div');
+   dot.classList.add('dot');
+ 
+   // Ajoute la classe 'dot_selected' au premier point
+   if (i === 0) {
+	 dot.classList.add('dot_selected');
+   }
+ 
+   dotsContainer.appendChild(dot);
+ }
 
 let bannerImg = document.querySelector("#banner .banner-img");
 let bannerText = document.querySelector("#banner p");
